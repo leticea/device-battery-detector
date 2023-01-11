@@ -24,8 +24,28 @@ function initBattery() {
       }
 
       if (level <= 20) {
-        
+        batteryLiquid.classList.add("gradient-color-red");
+        batteryLiquid.classList.remove("gradient-color-green", "gradient-color-orange", "gradient-color-yellow");
+
+      } else if (level <= 48) {
+        batteryLiquid.classList.add("gradient-color-orange");
+        batteryLiquid.classList.remove("gradient-color-green", "gradient-color-red", "gradient-color-yellow");
+
+      } else if (level <= 80) {
+        batteryLiquid.classList.add("gradient-color-yellow");
+        batteryLiquid.classList.remove("gradient-color-green", "gradient-color-orange", "gradient-color-red");
+
+      } else {
+        batteryLiquid.classList.add("gradient-color-green");
+        batteryLiquid.classList.remove("gradient-color-red", "gradient-color-orange", "gradient-color-yellow");
       }
     }
-  })
+    updateBattery();
+    batt.addEventListener("chargingchange", () => {
+      updateBattery()
+    });
+    batt.addEventListener("levelchange", () => {
+      updateBattery
+    });
+  });
 }
